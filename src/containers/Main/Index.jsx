@@ -1,5 +1,6 @@
 import React, { memo, useCallback, useEffect, useState } from 'react';
 import Api from "../../api";
+import Board from './components/Board';
 import { ContainerStyled } from "./style";
 
 function Main() {
@@ -22,7 +23,7 @@ function Main() {
     return (
         <ContainerStyled>
             <div className="mb-2">
-                
+                <Board data={data}/>
             </div>
         </ContainerStyled>
     )
