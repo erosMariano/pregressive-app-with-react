@@ -9,13 +9,31 @@ function Board({data}) {
 
     const getValue = (value) => value ? value : <Skeleton variant="text" width={182} height={60}/>
 
+
     return (
         <Grid container spacing={4}>
             <Grid item xs={12} md={3}>
                 <Card value={getValue(cases)} label="Total de casos" color="#5d78ff"/>
             </Grid>
+
+            <Grid item xs={12} md={3}>
+                <Card value={getValue(todayDeaths)} label="Óbita hoje" color="#f7b829 "/>
+            </Grid>
+
+            <Grid item xs={12} md={3}>
+                <Card value={getValue(todayCases)} label="Casos hoje" color="#000"/>
+            </Grid>
+
+
+            <Grid item xs={12} md={3}>
+                <Card value={getValue(deaths)} label="Total de casos" color="#e95078"/>
+            </Grid>
+
+            <Grid item xs={12} md={3}>
+                <Card value={getValue(recovered)} label="Total de casos" color="#67c887"/>
+            </Grid>
         </Grid>
     )
 }
 
-export default Board
+export default memo(Board)
