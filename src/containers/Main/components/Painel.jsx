@@ -2,7 +2,7 @@ import React, {memo} from 'react';
 import RefreshIcon from "../../../assets/images/refresh.svg";
 import {Card, Typography, Button, Select, MenuItem} from "../../../components";
 import CONTRIES from "../../../commons/constants/contries";
-import {CardPanelContentStyled, itemStyled} from "./style";
+import {CardPanelContentStyled, ItemStyled} from "./style";
 
 
 
@@ -15,10 +15,10 @@ function Painel({updateAt, onChange, data, country, getCovidData}) {
 
     const renderCountries = (country, index) =>(
         <MenuItem key={`country-${index}`} value={country.value}>
-            <itemStyled>
+            <ItemStyled>
                 <div>{country.label}</div>
                 <img src={country.flag} alt={`Pais-${country.label}`}/>
-            </itemStyled>
+            </ItemStyled>
         </MenuItem>
     )
 
