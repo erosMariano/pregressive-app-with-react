@@ -6,7 +6,9 @@ import {CardPanelContentStyled, itemStyled} from "./style";
 
 
 
-const navigationHasShare = navigator.share
+const navigationHasShare = navigator.share;
+
+
 function Painel({updateAt, onChange, data, country, getCovidData}) {
 
     const {cases,recovered, deaths, todayCases, todayDeaths} = data;
@@ -21,6 +23,36 @@ function Painel({updateAt, onChange, data, country, getCovidData}) {
     )
 
 
+    
+    const textCovid19 = `Pais: ${country} - recuperados: ${recovered}`
+
+    const copyInfo = () =>{
+        navigator.clipboard.writeText(textCovid19)
+    }
+
+    const shareInfo = () =>{
+        navigator.share({
+            title: `Dados do Covid19 - ${country}`,
+            text: textCovid19,
+            url: "http://localhost:3000/"
+        })
+    }
+
+
+    const renderShareButton = (
+        <div>
+            <Button variant="contained" color="primary" onClick={shareInfo}>
+                Compartilhar
+            </Button>
+        </div>
+    )
+
+    const renderCopyButton = (
+        <div>
+            <Button variant="contained" color="primary" onClick={copyInfo}>Copiar</Button>
+        </div>
+    )
+
 
     return (
         <Card>
@@ -31,7 +63,7 @@ function Painel({updateAt, onChange, data, country, getCovidData}) {
 
                     <Typography variant="h6" component="span" color="primary">COVID19</Typography>
                     <br/>
-                    
+
                     <Typography variant="body2" component="span" color="primary">Atualizado em: {updateAt}</Typography>
                 
                     <div className="pt-2">
@@ -40,6 +72,14 @@ function Painel({updateAt, onChange, data, country, getCovidData}) {
                         </Select>
                     </div>
                 </div>
+                
+                <div>
+                    {renderShareButton}
+                    <br/>
+                    {renderCopyButton}
+                </div>
+
+                {/* {navigationHasShare ? renderShareButton : renderCopyButton} */}
             </CardPanelContentStyled>
         </Card>
     )
