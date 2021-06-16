@@ -34,7 +34,7 @@ function Painel({updateAt, onChange, data, country, getCovidData}) {
         navigator.share({
             title: `Dados do Covid19 - ${country}`,
             text: textCovid19,
-            url: "http://localhost:3000/"
+            url: "https://covid-dio.herokuapp.com/"
         })
     }
 
